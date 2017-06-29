@@ -19,7 +19,8 @@ SOURCES += \
     core/components/transform.cpp \
     gfxengine/resourceloader.cpp \
     gfxengine/resourcecontainer.cpp \
-    utilities/log.cpp
+    utilities/log.cpp \
+    core/scene.cpp
 
 HEADERS += \
     gfxengine.h \
@@ -31,7 +32,8 @@ HEADERS += \
     gfxengine/resourceloader.h \
     gfxengine/resourcecontainer.h \
     gfxengine/resourcepreloadholder.h \
-    utilities/log.h
+    utilities/log.h \
+    core/scene.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
