@@ -18,7 +18,8 @@ SOURCES += \
     core/components/sprite.cpp \
     core/components/transform.cpp \
     gfxengine/resourceloader.cpp \
-    gfxengine/resourcecontainer.cpp
+    gfxengine/resourcecontainer.cpp \
+    utilities/log.cpp
 
 HEADERS += \
     gfxengine.h \
@@ -29,7 +30,8 @@ HEADERS += \
     core/container.h \
     gfxengine/resourceloader.h \
     gfxengine/resourcecontainer.h \
-    gfxengine/resourcepreloadholder.h
+    gfxengine/resourcepreloadholder.h \
+    utilities/log.h
 unix {
     target.path = /usr/lib
     INSTALLS += target
