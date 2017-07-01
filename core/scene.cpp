@@ -1,7 +1,8 @@
 #include <SDL2/SDL.h>
 #include "scene.h"
 
-#include "../core/container.h"
+#include "container.h"
+#include "input.h"
 
 #include "../utilities/log.h"
 #include "../gfxengine/gfxengine.h"
@@ -24,6 +25,7 @@ Scene *Scene::run() {
     SDL_Event event;
 
     GfxEngine& gfxengine = GfxEngine::getInstance();
+    Input& input = Input::getInstance();
 
     Log::print(Log::INFO, "run scene");
 
@@ -32,7 +34,13 @@ Scene *Scene::run() {
         while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT) {
                 return _nextScreen;
+            } else {
+                input.processEvent(event);
             }
+        }
+
+        if (input.getEnter(SDLK_ESCAPE)) {
+            return _nextScreen;
         }
 
         gfxengine.startFrame();
