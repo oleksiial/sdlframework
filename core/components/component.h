@@ -1,12 +1,12 @@
 #ifndef COMPONENT_H
 #define COMPONENT_H
 
-class Container;
+class Entity;
 
 class Component {
 public:
-    Component(Container& container)
-        : _container(container) {}
+    Component(Entity& entity)
+        : _entity(entity) {}
 
 
     virtual ~Component() {}
@@ -14,10 +14,10 @@ public:
 
     enum class ComponentType { transform, sprite, total };
 
-    Container& getContainer() { return _container; }
+    Entity& getEntity() { return _entity; }
     ComponentType getComponentType() const { return _componentType; }
 protected:
-    Container& _container;
+    Entity& _entity;
     ComponentType _componentType;
 };
 

@@ -1,18 +1,22 @@
 #include "transform.h"
+#include "../entity.h"
 #include <cmath>
 
-Transform::Transform(Container &container, float x, float y, float w, float h)
-    : Component(container)
+Transform::Transform(Entity &entity, float x, float y, float w, float h)
+    : Component(entity)
     , _center(CenterPoint::center)
     , _rotationAngle(0)
     , _x(x)
     , _y(y)
     , _w(w)
-    , _h(h){
+    , _h(h) {
     _componentType = ComponentType::transform;
-    /*if (parent != nullptr) {
-        parent->addChild(shared_from_this());
-    }*/
+
+//    const auto parent = entity.getParent();
+
+//    if (parent != nullptr) {
+//        parent->addChild(shared_from_this());
+//    }
 }
 
 void Transform::update() {

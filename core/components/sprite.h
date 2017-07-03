@@ -8,7 +8,7 @@ struct SDL_Texture;
 
 class Sprite : public Component {
 public:
-    Sprite(Container& container, const std::string& textureId);
+    Sprite(Entity& entity, const std::string& textureId);
     void update() override;
     SDL_Texture* getTexture() const;
 private:

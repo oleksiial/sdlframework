@@ -18,7 +18,7 @@ public:
         float _y;
     };
 
-    Transform(Container& container, float x, float y, float w, float h);
+    Transform(Entity& entity, float x, float y, float w, float h);
 
     void update() override;
 

@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include "scene.h"
 
-#include "container.h"
+#include "entity.h"
 #include "input.h"
 
 #include "../utilities/log.h"
@@ -17,8 +17,8 @@ Scene::Scene()
 }
 
 
-void Scene::registerEntity(std::shared_ptr<Container> container) {
-    _objects.push_back(std::move(container));
+void Scene::registerEntity(std::shared_ptr<Entity> entity) {
+    _objects.push_back(std::move(entity));
 }
 
 Scene *Scene::run() {

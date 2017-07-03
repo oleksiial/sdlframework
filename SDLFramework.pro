@@ -21,7 +21,8 @@ SOURCES += \
     gfxengine/resourcecontainer.cpp \
     utilities/log.cpp \
     core/scene.cpp \
-    core/input.cpp
+    core/input.cpp \
+    entities/picture.cpp
 
 HEADERS += \
     gfxengine.h \
@@ -35,7 +36,9 @@ HEADERS += \
     gfxengine/resourcepreloadholder.h \
     utilities/log.h \
     core/scene.h \
-    core/input.h
+    core/input.h \
+    core/entity.h \
+    entities/picture.h
 unix {
     target.path = /usr/lib
     INSTALLS += target

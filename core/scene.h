@@ -4,17 +4,17 @@
 #include <memory>
 #include <vector>
 
-class Container;
+class Entity;
 
 class Scene {
 public:
     Scene();
 
-    void registerEntity(std::shared_ptr<Container> container);
+    void registerEntity(std::shared_ptr<Entity> entity);
 
     Scene* run();
 private:
-    std::vector<std::shared_ptr<Container>> _objects;
+    std::vector<std::shared_ptr<Entity>> _objects;
 
     Scene *_nextScreen;
     bool _exit;

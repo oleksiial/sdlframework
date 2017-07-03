@@ -2,8 +2,8 @@
 
 #include "../../gfxengine/resourcecontainer.h"
 
-Sprite::Sprite(Container &container, const std::string &textureId)
-    : Component(container)
+Sprite::Sprite(Entity &entity, const std::string &textureId)
+    : Component(entity)
     , _textureId(textureId){
     _componentType = ComponentType::sprite;
 }
