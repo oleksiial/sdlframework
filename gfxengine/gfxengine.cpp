@@ -23,6 +23,21 @@ GfxEngine & GfxEngine::getInstance() {
     return instance;
 }
 
+GfxEngine::~GfxEngine() {
+    Log::print(Log::INFO, "free resources");
+    for (auto& image: ResourceContainer::imageContainer) {
+        SDL_DestroyTexture(image.second);
+    }
+
+    SDL_DestroyRenderer(_renderer);
+    SDL_DestroyWindow(_window);
+
+    IMG_Quit();
+    TTF_Quit();
+    SDL_Quit();
+    Log::print(Log::INFO, "free resources completed, bye");
+}
+
 bool GfxEngine::init() {
     Log::print(Log::INFO, "start initialization\n");
     if(SDL_Init(SDL_INIT_VIDEO) == 0) {
@@ -50,7 +65,7 @@ bool GfxEngine::init() {
         return false;
     }
 
-    SDL_SetRenderDrawColor(_renderer, 200, 200, 0, 255);
+    SDL_SetRenderDrawColor(_renderer, 100, 100, 200, 255);
     Log::print(Log::INFO, "initialization complete");
     return true;
 }
@@ -65,21 +80,6 @@ void GfxEngine::loadResources(const ResourcePreloadHolder& resourcePreloadHolder
         resourceLoader.loadImage(image.first, image.second);
     }
     Log::print(Log::INFO, "load resources completed");
-}
-
-void GfxEngine::free() {
-    Log::print(Log::INFO, "free resources");
-    for (auto& image: ResourceContainer::imageContainer) {
-        SDL_DestroyTexture(image.second);
-    }
-
-    SDL_DestroyRenderer(_renderer);
-    SDL_DestroyWindow(_window);
-
-    IMG_Quit();
-    TTF_Quit();
-    SDL_Quit();
-    Log::print(Log::INFO, "free resources completed, bye");
 }
 
 void GfxEngine::startFrame() {

@@ -11,11 +11,10 @@ class ResourcePreloadHolder;
 class GfxEngine {
 public:
     static GfxEngine& getInstance();
-    ~GfxEngine() {}
+    ~GfxEngine();
 
     bool init();
     void loadResources(const ResourcePreloadHolder& resourcePreloadHolder);
-    void free();
 
     void startFrame();
     void drawSprite(const Sprite *sprite, const Transform *transform);
