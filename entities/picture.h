@@ -1,11 +1,14 @@
 #ifndef PICTURE_H
 #define PICTURE_H
 
+#include "../core/entity.h"
 
-class Picture
-{
+class Picture : public Entity {
 public:
-    Picture();
-};
+    Picture(const std::string &image, Scene& scene, const Entity *parent = nullptr);
 
+    void update() override;
+
+    void setTransform(float x, float y, float w, float h);
+};
 #endif // PICTURE_H
