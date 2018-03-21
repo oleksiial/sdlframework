@@ -5,7 +5,7 @@
 
 class Picture : public Entity {
 public:
-    Picture(const std::string &image, Scene& scene, const Entity *parent = nullptr);
+    Picture(const std::string &image, Scene& scene, std::shared_ptr<const Entity> parent = nullptr);
 
     void update() override;
 

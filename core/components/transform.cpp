@@ -24,11 +24,13 @@ void Transform::update() {
 }
 
 Transform::Coord Transform::getScreenCoord(Coord coord) const {
-//    if (_parent.lock() != nullptr) {
-//        return _parent.lock()->getScreenCoord(coord + Coord(_x, _y));
-//    } else {
-//        return coord + Coord(_x, _y);
-//    }
+    if (_entity.getParent() != nullptr) {
+        return _entity.getParent()->
+                getComponent<Transform>(Component::ComponentType::transform)->
+                getScreenCoord(coord + Coord(_x, _y));
+    } else {
+        return coord + Coord(_x, _y);
+    }
     return coord + Coord(_x, _y);
 }
 

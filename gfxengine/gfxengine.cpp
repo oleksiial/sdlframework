@@ -65,7 +65,7 @@ bool GfxEngine::init() {
         return false;
     }
 
-    SDL_SetRenderDrawColor(_renderer, 100, 100, 200, 255);
+    SDL_SetRenderDrawColor(_renderer, 50, 50, 150, 255);
     Log::print(Log::INFO, "initialization complete");
     return true;
 }

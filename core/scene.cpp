@@ -17,8 +17,14 @@ Scene::Scene()
 }
 
 
-void Scene::registerEntity(std::shared_ptr<Entity> entity) {
-    _objects.push_back(std::move(entity));
+void Scene::registerEntity(std::shared_ptr<Entity> entity, std::shared_ptr<Entity> parent) {
+//    _objects.emplace_back(std::move(entity));
+    if (parent == nullptr) {
+        _objects.initialize(entity);
+    } else {
+        _objects.addNode(entity, parent);
+    }
+
 }
 
 Scene *Scene::run() {
@@ -45,10 +51,20 @@ Scene *Scene::run() {
 
         gfxengine.startFrame();
 
-        for(auto& obj : _objects) {
-            gfxengine.drawSprite(obj->getComponent<Sprite>(Component::ComponentType::sprite).get(),
-                                 obj->getComponent<Transform>(Component::ComponentType::transform).get());
-        }
+        _objects.forEachIf(
+                    [&gfxengine](std::shared_ptr<Entity> entity) {
+            gfxengine.drawSprite(entity->getComponent<Sprite>(Component::ComponentType::sprite).get(),
+                                 entity->getComponent<Transform>(Component::ComponentType::transform).get());
+        },
+                    [](auto entity) { return entity->isVisible(); }
+        );
+
+//        for(auto& obj : _objects) {
+//            if (obj->isVisible() == true) {
+//                gfxengine.drawSprite(obj->getComponent<Sprite>(Component::ComponentType::sprite).get(),
+//                                     obj->getComponent<Transform>(Component::ComponentType::transform).get());
+//            }
+//        }
 
 
         gfxengine.endFrame();

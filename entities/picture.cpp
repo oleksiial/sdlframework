@@ -3,7 +3,7 @@
 #include "../core/components/sprite.h"
 #include "../core/components/transform.h"
 
-Picture::Picture(const std::string& image, Scene& scene, const Entity *parent)
+Picture::Picture(const std::string& image, Scene& scene, std::shared_ptr<const Entity> parent)
     : Entity(scene, parent) {
     addComponent(std::make_shared<Sprite>(*this, image));
     addComponent(std::make_shared<Transform>(*this, 0, 0, 100, 100));

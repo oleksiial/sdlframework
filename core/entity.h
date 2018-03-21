@@ -7,7 +7,7 @@ class Scene;
 
 class Entity : public Container {
 public:
-    Entity(Scene& scene, const Entity *parent = nullptr)
+    Entity(Scene& scene, std::shared_ptr<const Entity> parent = nullptr)
         : _scene(scene)
         , _parent(parent)
         , _isVisible(true)
@@ -28,11 +28,11 @@ public:
 
     void setVisible(bool value) { _isVisible = value; }
     void setActive(bool value) { _isActive = value; }
-    const Entity* getParent() const { return _parent; }
+    std::shared_ptr<const Entity> getParent() const { return _parent; }
 
 private:
     Scene& _scene;
-    const Entity *_parent;
+    std::shared_ptr<const Entity> _parent;
 
     bool _isVisible;
     bool _isActive;
